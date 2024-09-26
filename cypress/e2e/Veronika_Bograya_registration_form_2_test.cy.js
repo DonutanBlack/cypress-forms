@@ -6,19 +6,19 @@ describe('Section 1: Functional tests', () => {
 
     it('User can use only same both first and validation passwords', ()=>{
         cy.get('[data-testid="user"]').type('VBtest')
-        cy.get('[name="email"]').type('VBtest@test.com')
+        cy.get('#email').type('VBtest@test.com')
         cy.get('[data-cy="name"]').type('Nika')
         cy.get('[data-testid="lastNameTestId"]').type('Boggart')
         cy.get('[data-testid="phoneNumberTestId"]').type('10203040')
-        cy.get("input[name='password']").type('TestVB2rF')
-        cy.get('[name="confirm"]').type('TestVB1rF')
+        cy.get("#password").type('TestVB2rF')
+        cy.get('#confirm').type('TestVB1rF')
         cy.get('h2').contains('Password').click()
         cy.get('.submit_button').should('be.disabled')
         cy.get('#success_message').should('not.be.visible')
         cy.get('#password_error_message').should('be.visible').should('contain', 'Passwords do not match!')
-        cy.get('[name="confirm"]').scrollIntoView()
-        cy.get('[name="confirm"]').clear()
-        cy.get('[name="confirm"]').type('TestVB2rF')
+        cy.get('#confirm').scrollIntoView()
+        cy.get('#confirm').clear()
+        cy.get('#confirm').type('TestVB2rF')
         cy.get('h2').contains('Password').click()
         cy.get('#password_error_message').should('not.be.visible')
         cy.get('.submit_button').should('be.enabled')
@@ -26,7 +26,7 @@ describe('Section 1: Functional tests', () => {
     
     it('User can submit form with all fields added', ()=>{
         cy.get('[data-testid="user"]').type('VBtest')
-        cy.get('[name="email"]').type('vbtest@test.com')
+        cy.get('#email').type('vbtest@test.com')
         cy.get('[data-cy="name"]').type('Nika')
         cy.get('[data-testid="lastNameTestId"]').type('Boggart')
         cy.get('[data-testid="phoneNumberTestId"]').type('10203040')
@@ -34,8 +34,8 @@ describe('Section 1: Functional tests', () => {
         cy.get('[name="vehicle3"]').check()
         cy.get('[name="cars"]').select('saab')
         cy.get('[name="animal"]').select('snake')
-        cy.get("input[name='password']").type('TestVB2rF')
-        cy.get('[name="confirm"]').type('TestVB2rF')
+        cy.get("#password").type('TestVB2rF')
+        cy.get('#confirm').type('TestVB2rF')
         cy.get('h2').contains('Password').click()
         cy.get('.submit_button').should('be.enabled')
         cy.get('.submit_button').click()
@@ -174,7 +174,7 @@ describe('Section 2: Visual tests', () => {
         })
     })
 
-    it.only('Animal dropdown is correct', () => {
+    it('Animal dropdown is correct', () => {
         cy.get('#animal').select(1).screenshot('Animal drop-down')
         cy.screenshot('Full page screenshot')
 

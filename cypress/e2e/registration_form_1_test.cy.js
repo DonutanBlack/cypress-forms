@@ -71,7 +71,8 @@ describe('This is first test suite, Veronika Bograya', () => {
         cy.get('#success_message').should('not.be.visible')
 
         // Assert that correct error message is visible and contain given text
-        cy.get('#input_error_message').should('be.visible').should('contain', 'Mandatory input field is not valid or empty!')
+        cy.get('#input_error_message')
+          .should('be.visible').should('contain', 'Mandatory input field is not valid or empty!')
 
         // Assert that username has tooltip with error message
         cy.get('input[name="username"]').should('have.attr', 'title').should('contain', 'Input field')
