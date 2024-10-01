@@ -4,7 +4,7 @@ beforeEach(() => {
 
 describe('Section 1: Functional tests', () => {
 
-    it('User can use only same both first and validation passwords', ()=>{
+    it.only('User can use only same both first and validation passwords', ()=>{
         cy.get('[data-testid="user"]').type('VBtest')
         cy.get('#email').type('VBtest@test.com')
         cy.get('[data-cy="name"]').type('Nika')
